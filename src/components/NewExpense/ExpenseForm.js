@@ -12,17 +12,52 @@ const ExpenseForm = () => {
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState(formattedDate);
 
+  /* const [userInput, setUserInput] = useState({
+    enteredTitle: "",
+    enteredAmount: "",
+    enteredDate: formattedDate,
+  }); */
+
   const titleChangeHandler = (event) => {
     console.log("Title changed", event.target.value);
     setEnteredTitle(event.target.value);
+
+    // because React schedules state changes, the previous updated state, might not be updated by this time:
+
+    // setUserInput({
+    //   ...userInput,
+    //   enteredAmount: event.target.value,
+    // });
+
+    // so its better to pass in an arrow function, which return an updated state, and previousState is always updated
+
+    /* setUserInput((previousState) => {
+      return { ...previousState, enteredTitle: event.target.value };
+    }); */
   };
 
   const amountChangeHandler = (event) => {
     setEnteredAmount(event.target.value);
+    /* setUserInput({
+      ...userInput,
+      enteredAmount: event.target.value,
+    }); */
+
+    /* setUserInput((previousState) => {
+      return { ...previousState, enteredAmount: event.target.value };
+    }); */
   };
 
   const dateChangeHandler = (event) => {
     setEnteredDate(event.target.value);
+    /* setUserInput({
+      ...userInput,
+      enteredDate: event.target.value,
+    }); */
+
+    /* setUserInput((previousState) => {
+      return { ...previousState, enteredDate: event.target.value };
+    }); */
   };
 
   return (
