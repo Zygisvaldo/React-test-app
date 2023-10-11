@@ -1,11 +1,11 @@
-import ExpenseList from "./components/ExpenseList";
+import ExpenseList from "./components/Expenses/ExpenseList";
 import { expenses } from "./expenseData";
 
 function App() {
   return (
     <div>
       <h1>Lets get started</h1>
-      <ExpenseList expenses={expenses}/>
+      <ExpenseList expenses={expenses} />
     </div>
   );
 }
