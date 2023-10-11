@@ -1,10 +1,11 @@
 import ExpenseList from "./components/Expenses/ExpenseList";
+import NewExpense from "./components/NewExpense/NewExpense";
 import { expenses } from "./expenseData";
 
 const App = () => {
   return (
     <div>
-      <h1>Lets get started</h1>
+      <NewExpense />
       <ExpenseList expenses={expenses} />
     </div>
   );
