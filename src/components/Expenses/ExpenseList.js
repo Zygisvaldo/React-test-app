@@ -7,10 +7,11 @@ const ExpenseList = (props) => {
   const onSelectedYear = (year) => {
     console.log(year);
   };
+
   return (
     <div>
-      <ExpenseFilter onSelectedYearChange={onSelectedYear} />
       <Card className="expenses">
+        <ExpenseFilter onSelectedYearChange={onSelectedYear} />
         {props.expenses.map((expense) => (
           <ExpenseItem
             key={expense.title}
