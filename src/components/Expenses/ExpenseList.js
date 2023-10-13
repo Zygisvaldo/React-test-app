@@ -19,6 +19,8 @@ const ExpenseList = (props) => {
     filterInfoText = "2020, 2021, & 2022";
   } else if (filteredYear === "2020") {
     filterInfoText = "2019, 2021, & 2022";
+  }else if (filteredYear === "2021") {
+    filterInfoText = "2019, 2020, & 2022";
   } else {
     filterInfoText = "2019, 2020, & 2021";
   }
@@ -36,7 +38,7 @@ const ExpenseList = (props) => {
           filterOptions={filterOptions}
           onChangeFilter={filterChangeHandler}
         />
-        <p>Data for year 2019, 2021 & 2022 is hidden.</p>
+        <p>Data for year {filterInfoText} is hidden.</p>
         {props.expenses.map((expense) => (
           <ExpenseItem
             key={expense.title}
