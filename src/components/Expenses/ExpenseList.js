@@ -19,7 +19,7 @@ const ExpenseList = (props) => {
     filterInfoText = "2020, 2021, & 2022";
   } else if (filteredYear === "2020") {
     filterInfoText = "2019, 2021, & 2022";
-  }else if (filteredYear === "2021") {
+  } else if (filteredYear === "2021") {
     filterInfoText = "2019, 2020, & 2022";
   } else {
     filterInfoText = "2019, 2020, & 2021";
