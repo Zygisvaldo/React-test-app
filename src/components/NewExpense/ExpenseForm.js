@@ -11,7 +11,6 @@ const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState(formattedDate);
-  const [showExpensesForm, setShowExpensesForm] = useState(false);
 
   /* const [userInput, setUserInput] = useState({
     enteredTitle: "",
@@ -85,67 +84,53 @@ const ExpenseForm = (props) => {
   };
 
   const cancelFormHandler = () => {
-    setShowExpensesForm(false);
+    props.onCancel();
   };
 
-  const openFormHandler = () => {
-    setShowExpensesForm(true);
-  };
-
-  let fromContent = (
-    <div>
-      <button onClick={openFormHandler}>Open Expense Form</button>
-    </div>
+  return (
+    <form onSubmit={submitHandler}>
+      <div className="new-expense__controls">
+        <div className="new-expense__control">
+          <label>Title</label>
+          <input
+            type="text"
+            value={enteredTitle}
+            onChange={(event) =>
+              inputChangeHandler("title", event.target.value)
+            }
+          />
+        </div>
+        <div className="new-expense__control">
+          <label>Amount</label>
+          <input
+            type="number"
+            value={enteredAmount}
+            min="0.01"
+            step="0.01"
+            onChange={(event) =>
+              inputChangeHandler("amount", event.target.value)
+            }
+          />
+        </div>
+        <div className="new-expense__control">
+          <label>Date</label>
+          <input
+            type="date"
+            value={enteredDate}
+            min="2023-01-01"
+            max="2027-01-01"
+            onChange={(event) => inputChangeHandler("date", event.target.value)}
+          />
+        </div>
+      </div>
+      <div className="new-expense__actions">
+        <button type="button" onClick={cancelFormHandler}>
+          Cancel
+        </button>
+        <button type="submit">Add Expense</button>
+      </div>
+    </form>
   );
-
-  if (showExpensesForm === true) {
-    fromContent = (
-      <form onSubmit={submitHandler}>
-        <div className="new-expense__controls">
-          <div className="new-expense__control">
-            <label>Title</label>
-            <input
-              type="text"
-              value={enteredTitle}
-              onChange={(event) =>
-                inputChangeHandler("title", event.target.value)
-              }
-            />
-          </div>
-          <div className="new-expense__control">
-            <label>Amount</label>
-            <input
-              type="number"
-              value={enteredAmount}
-              min="0.01"
-              step="0.01"
-              onChange={(event) =>
-                inputChangeHandler("amount", event.target.value)
-              }
-            />
-          </div>
-          <div className="new-expense__control">
-            <label>Date</label>
-            <input
-              type="date"
-              value={enteredDate}
-              min="2023-01-01"
-              max="2027-01-01"
-              onChange={(event) =>
-                inputChangeHandler("date", event.target.value)
-              }
-            />
-          </div>
-        </div>
-        <div className="new-expense__actions">
-          <button onClick={cancelFormHandler}>Cancel</button>
-          <button type="submit">Add Expense</button>
-        </div>
-      </form>
-    );
-  }
-
-  return <div>{fromContent}</div>;
 };
 
 export default ExpenseForm;
